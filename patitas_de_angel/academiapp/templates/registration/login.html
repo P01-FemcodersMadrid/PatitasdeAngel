@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+  <div class="container_form">
+
+    <h3 class="txt_gris_medio">Acceder</h3>
+    <hr>
+      <div class="login-container">
+        {% if forms.errors %}
+          <div class="alert alert-danger">
+            <p>Tu usuario y contraseña no coinciden.</p>
+          </div>
+        {% endif %}
+        <form id="form-login" method="post">
+          {% csrf_token %}
+
+          <div class="w450" id="username">
+            {{ form.username }}
+          </div>
+           <div class="w450" id="password">
+            {{ form.password }}
+          </div>
+          <button id="btn-registrar" class="button-large">Entrar</button>
+          <div class="clearfix"></div>
+        </form>
+        <a href="#" class="txt_verde txt_center mt15 mb20" style="display:block">Aviso de Privacidad</a>
+    </div>
+  </div>
+</body>
+</html>
