@@ -58,7 +58,7 @@ ROOT_URLCONF = 'patitas_de_angel.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/Users/michael/PycharmProjects/Proyecto/academia/patitas_de_angel/academiapp/templates/registration'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vista que cualquier usuario puede ver</title>
+    <title>Vista una vez dentro</title>
 </head>
 <body>
-<button><a href='/inicio'>Iniciar sesión</a></button>
-# Analizar como hacer lo del registro de otros roles
+    <h3>Has iniciado sesion</h3>
+    <p>El nombre de la clase del View es: {{nombre_persona}}{{apellido_persona}}</p>
+    <p>La fecha de hoy es: {{momento_actual}}</p>
+    <p>
+        <ul>{% for cadaTema in temas_curso %}
+
+            <li>{{cadaTema}}</li>
+
+        {% endfor %}
+        </ul>
+    </p>
+
+    <button><a href='/accounts/logout'>Cerrar sesión</a></button>
+
 
 </body>
 </html>
