@@ -5,18 +5,25 @@
     <title>Vista una vez dentro</title>
 </head>
 <body>
+
+    {% include "barra.html" %}
     <h3>Has iniciado sesion</h3>
-    <p>El nombre de la clase del View es: {{nombre_persona}}{{apellido_persona}}</p>
-    <p>La fecha de hoy es: {{momento_actual}}</p>
-    <p>
-        <ul>{% for cadaTema in temas_curso %}
+    <!--<p>El nombre de la clase del View es: {{nombre_persona}}{{apellido_persona}}</p>-->
+    <p>Las asignaturas dictadas en la Academia son:</p>
+    {% if asignaturas %}
+        <ul>
+            {% for x in asignaturas.nombre %}
+            <li>
+                {{x}}
 
-            <li>{{cadaTema}}</li>
-
-        {% endfor %}
+            </li>
+            {% endfor %}
         </ul>
-    </p>
-
+    <!-- Si no hay nada en Mascotas.-->
+    {% else %}
+        <p>No hay ninguna asignatura.</p>
+    {% endif %}
+    <p>La fecha de hoy es: {{momento_actual}}</p>
     <button><a href='/accounts/logout'>Cerrar sesión</a></button>
 
 

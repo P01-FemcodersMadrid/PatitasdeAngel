@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados</title>
+</head>
+<body>
+    <h3>Resultados Busqueda</h3>
+    <p>Estas buscando: <strong>{{query}}</strong></p>
+    {% if mascotas %}
+        <p>Mascotas encontradas: {{mascotas|length}} mascotas</p>
+        <ul>
+            {% for mascota in mascotas %}
+            <li>
+                {{mascota.nombre}}
+
+            </li>
+            {% endfor %}
+        </ul>
+    <!-- Si no hay nada en Mascotas.-->
+    {% else %}
+        <p>No encontramos a una mascota con ese nombre.</p>
+    {% endif %}
+</body>
+</html>

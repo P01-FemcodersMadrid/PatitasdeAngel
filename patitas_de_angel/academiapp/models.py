@@ -56,12 +56,11 @@ class Entrenadora(models.Model):
     nombre = models.CharField(max_length=20)
     apellidos = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
-  #  #pass1 = models.Charfield(max_length=10)
     asignatura = models.ForeignKey(
         Asignatura, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return f'Entrenadora {self.id} : {self.nombre} {self.apellidos} {self.email} {self.pass1}'
+        return f'Entrenadora {self.id} : {self.nombre} {self.apellidos} {self.email}'
 
 # class Rol(models.Model):
 #    rol = models.BooleanField()
