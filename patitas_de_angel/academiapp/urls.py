@@ -4,4 +4,5 @@ from academiapp import views
 
 urlpatterns = [
     path('inicio', views.home, name='home'),
+   # path('', views.home, name='home'),
 ]

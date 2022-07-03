@@ -22,8 +22,11 @@ from academiapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Este es el cambio:
+    # path('inicio', views.home, name='home'),
     path('', include('academiapp.urls')),
     path('busqueda_mascotas', views.busqueda_mascotas),
     path('buscar/', views.buscar),
+    path('contacto/', views.contacto),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
