@@ -5,27 +5,19 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from django.shortcuts import render
 
+#app_name='academiapp'
+
+
+# Create your views here.
 from academiapp.models import *
 
-app_name='academiapp'
-# Create your views here.
 
-#class Persona(object):
-#    def __init__(self, nombre, apellido):
-#        self.nombre=nombre
-#        self.apellido=apellido
-
-#Para proteger nuestras vistas y que no cualquiera pueda acceder
 @login_required
 def home(request):
-    #p1 = Persona("Maria", "Diaz")
-    #temasCurso = ["Algoritmos", "Base de Datos", "Python"]
-# Voy a mostrar todas las materias que imparte la profesora y la hora que es.
-    #ahora = datetime.datetime.now()
-    asig = Asignatura
 
-    return render(request, "registration/main.html", {"asignaturas": asig})
-    #return render(request, "main.html", {"nombre_persona": p1.nombre, "apellido_persona": p1.apellido, "momento_actual": ahora, "temas_curso": temasCurso})
+    asig = Asignatura.objects.all()
+    return render(request, "registration/main.html", {'asignaturas': asig})
+
 
 @login_required
 def busqueda_mascotas(request):

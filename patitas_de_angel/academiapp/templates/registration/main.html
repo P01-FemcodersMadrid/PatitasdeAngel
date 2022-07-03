@@ -2,28 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vista una vez dentro</title>
+    <title>Main</title>
 </head>
 <body>
-
     {% include "registration/barra.html" %}
     <h3>Has iniciado sesion</h3>
     <!--<p>El nombre de la clase del View es: {{nombre_persona}}{{apellido_persona}}</p>-->
     <p>Las asignaturas dictadas en la Academia son:</p>
     {% if asignaturas %}
         <ul>
-            {% for x in asignaturas.nombre %}
+            {% for asignatura in asignaturas %}
             <li>
-                {{x}}
+                {{ asignatura.nombre }}
 
             </li>
             {% endfor %}
         </ul>
-    <!-- Si no hay nada en Mascotas.-->
+    <!-- Si no hay nada en asignaturas.-->
     {% else %}
         <p>No hay ninguna asignatura.</p>
     {% endif %}
-    <!--<p>La fecha de hoy es: {{fecha}}</p>-->
+    <button><a href='busqueda_mascota.html'>Buscar mascota</a></button>
     <button><a href='/accounts/logout'>Cerrar sesión</a></button>
 
 
