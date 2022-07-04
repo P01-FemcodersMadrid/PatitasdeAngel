@@ -1,0 +1,13 @@
+#barra{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-transform: uppercase;
+    background-color: #000;
+    color: #fff;
+}
+
+#barra li{
+    display: inline;
+    margin: 0 30px;
+}
