@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<div class="topnav">
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+</div>
+<div class="sidenav">
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+</div>
+
+<div class="content">
+
+    <h1>Bienvenido a Academia Patitas de Angel</h1>
+    <div>Nro de mascotas registradas : {{nro}}</div>
+    <div>
+        <a href="nueva_mascota">Agregar Mascota</a>
+    </div>
+    <div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Nombre Responsable</th>
+                <th>Email</th>
+                <th>Ver</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            {% for mas in mascotas %}
+            <tr>
+                <td>{{mas.id}}</td>
+                <td>{{mas.nombre}}</td>
+                <td>{{mas.clienta_id.nombre_Responsable}} {{mas.clienta_id.apellido_Responsable}}</td>
+                <td>{{mas.clienta_id.email_Responsable}}</td>
+                <td><a href="detalleMascota/{{per.id}}">Ver detalle</a></td>
+                <td><a href="editarMascota/{{per.id}}">Editar</a></td>
+                <td><a href="eliminarMascota/{{per.id}}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <div class="footer">
+        <p>Footer</p>
+    </div>
+
+
+</body>
+</html>

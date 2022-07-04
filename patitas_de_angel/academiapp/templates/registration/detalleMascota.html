@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de cada mascota</title>
+</head>
+<body>
+    <h1>Detalle</h1>
+    <div>id Mascota:{{mascota.id}}</div>
+    <div>nombre:{{mascota.nombre}}</div>
+    <div>apellido:{{mascota.clienta_id.nombre_Responsable}} {{mascota.clienta_id.apellido_Responsable}}</div>
+    <div>Email:{{mascota.clienta_id.email_Responsable}}</div>
+
+    <a href="{% url 'home' %}">Regresar al inicio</a>
+
+</body>
+</html>

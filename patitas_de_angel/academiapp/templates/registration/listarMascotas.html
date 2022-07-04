@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href='{% static "css/barra.css" %}' rel="stylesheet" />
+    <title>Lista Mascotas</title>
+</head>
+<body>
+    {% include "registration/barra.html" %}
+    <h3>Has iniciado sesion</h3>
+    <p>Las mascotas en la Academia son:</p>
+    {% if mascotas %}
+        <ul>
+            {% for mascota in mascotas %}
+            <li>
+                {{ mascota.nombre }}
+            </li>
+            {% endfor %}
+        </ul>
+    <!-- Si no hay nada en mascotas.-->
+    {% else %}
+        <p>No hay ninguna mascota registrada.</p>
+    {% endif %}
+    <button><a href='/accounts/logout'>Cerrar sesión</a></button>
+
+</body>
+</html>
+</html>

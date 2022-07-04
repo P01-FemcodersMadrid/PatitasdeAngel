@@ -8,9 +8,16 @@
 </head>
 <body>
     {% include "registration/barra.html" %}
-    <h3>Has iniciado sesion</h3>
+<!--    <h3>Has iniciado sesion</h3> -->
+
+    <h1>Bienvenido a Academia Patitas de Angel</h1>
+    <div>Nro de mascotas registradas : {{nro}}</div>
+    <div>
+        <a href="nuevaMascota">Agregar Mascota</a>
+    </div>
+
     <!--<p>El nombre de la clase del View es: {{nombre_persona}}{{apellido_persona}}</p>-->
-    <p>Las asignaturas dictadas en la Academia son:</p>
+  <!--  <p>Las asignaturas dictadas en la Academia son:</p>
     {% if asignaturas %}
         <ul>
             {% for asignatura in asignaturas %}
@@ -19,13 +26,46 @@
             </li>
             {% endfor %}
         </ul>
+  -->
     <!-- Si no hay nada en asignaturas.-->
-    {% else %}
+ <!--   {% else %}
         <p>No hay ninguna asignatura.</p>
     {% endif %}
+    -->
     <!--<button><a href='busqueda_mascota.html'>Buscar mascota</a></button>-->
-    <button><a href='/accounts/logout'>Cerrar sesión</a></button>
+    <div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Nombre Responsable</th>
+                <th>Email</th>
+                <th>Ver</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
 
+            </thead>
+            <tbody>
+            {% for mas in mascotas %}
+            <tr>
+                <td>{{mas.id}}</td>
+                <td>{{mas.nombre}}</td>
+                <td>{{mas.clienta_id.nombre_Responsable}} {{mas.clienta_id.apellido_Responsable}}</td>
+                <td>{{mas.clienta_id.email_Responsable}}</td>
+                <td><a href="registration/detalleMascota/{{mas.id}}">Ver detalle</a></td>
+                <td><a href="registration/editarMascota/{{mas.id}}">Editar</a></td>
+                <td><a href="registration/eliminarMascota/{{mas.id}}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <button><a href='/accounts/logout'>Cerrar sesión</a></button>
+    <div class="footer">
+        <p>Footer</p>
+    </div>
 </body>
-</html>
 </html>

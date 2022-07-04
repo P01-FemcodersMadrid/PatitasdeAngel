@@ -1,4 +1,19 @@
-#from django import forms
+from django.forms import ModelForm
+#    , EmailInput
+from academiapp.models import *
+
+class MascotaForm(ModelForm):
+    class Meta:
+        model = Mascota
+        fields = '__all__'
+#        widgets = {
+#            'email': EmailInput(attrs={'type':'email'})
+#        }
+
+
+
+
+
 
 #from django.contrib.auth.forms import UserCreationForm
 

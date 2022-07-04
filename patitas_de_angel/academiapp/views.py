@@ -3,20 +3,70 @@ import datetime
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import get_template
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 
 #app_name='academiapp'
 
 
 # Create your views here.
+from academiapp.forms import MascotaForm
 from academiapp.models import *
 
 
 @login_required
 def home(request):
+    mas = Mascota.objects.all()
+    return render(request, "registration/main.html", {'mascotas': mas})
 
-    asig = Asignatura.objects.all()
-    return render(request, "registration/main.html", {'asignaturas': asig})
+@login_required
+def index(request):
+
+    mas = Mascota.objects.all()
+    return render(request, "registration/index.html", {'mascotas': mas})
+
+@login_required
+def detalleMascota(request, id):
+    mascota = Mascota.objects.get(pk=id)
+    return render(request, 'registration/detalleMascota.html', {'mascota': mascota})
+
+@login_required
+def editarMascota(request, id):
+    mascota = get_object_or_404(Mascota, pk=id)
+    if request.method == 'POST':
+        formaMascota = MascotaForm(request.POST, instance=mascota)
+        if formaMascota.is_valid():
+            formaMascota.save()
+            return redirect('home')
+    else:
+          #pasa la informacion del objeto recuperado de nuestra base de datos
+        formaMascota = MascotaForm(instance=mascota) #recibe una referencia de nuestro modelo formulario que llama a nuestra clase persona
+                                                     # usamos instance para indicar el objeto que vamos a trabajar en el formulario
+    return render(request, 'registration/editarMascota.html', {'formaMascota': formaMascota})
+
+@login_required
+def eliminarMascota(request, id):
+    mascota = get_object_or_404(Mascota, pk=id)
+    if mascota:
+        mascota.delete()
+    return redirect('home')
+
+@login_required
+def listarMascotas(request):
+
+    masc = Mascota.objects.all()
+    return render(request, "registration/listarMascotas.html", {'mascotas': masc})
+
+@login_required
+def nuevaMascota(request):
+    if request.method == 'POST':
+        formaMascota = MascotaForm(request.POST)
+        if formaMascota.is_valid():
+            formaMascota.save()
+            return redirect('home')
+    else:
+        formaMascota = MascotaForm
+
+    return render(request, 'registration/nuevaMascota.html', {'formaMascota': formaMascota})
 
 
 @login_required

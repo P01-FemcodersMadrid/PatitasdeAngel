@@ -5,5 +5,6 @@ from .forms import *
 # Register your models here.
 
 admin.site.register(Mascota)
-admin.site.register(Entrenadora)
+#admin.site.register(Entrenadora)
 admin.site.register(Asignatura)
+admin.site.register(Clienta)

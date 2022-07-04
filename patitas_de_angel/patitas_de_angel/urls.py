@@ -23,8 +23,14 @@ from academiapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('academiapp.urls')),
+    path('index', views.index),
     path('busqueda_mascotas', views.busqueda_mascotas),
     path('buscar/', views.buscar),
+    path('nuevaMascota', views.nuevaMascota),
+    path('listarMascotas', views.listarMascotas),
+    path('registration/detalleMascota/<int:id>', views.detalleMascota),
+    path('registration/editarMascota/<int:id>', views.editarMascota),
+    path('registration/eliminarMascota/<int:id>', views.eliminarMascota),
     path('contacto/', views.contacto),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
