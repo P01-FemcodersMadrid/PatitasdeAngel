@@ -3,6 +3,7 @@ import datetime
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.shortcuts import render, redirect, get_object_or_404
@@ -13,12 +14,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 # Create your views here.
 from academiapp.forms import MascotaForm
 from academiapp.models import *
-
+from django.contrib.auth.backends import *
 
 @login_required
 def home(request):
     mas = Mascota.objects.all()
+    #usuario = User.id.
     return render(request, "registration/main.html", {'mascotas': mas})
+ #   return render(request, "registration/main.html", {'mascotas': mas}, {'usuario': usuario})
 
 @login_required
 def index(request):
@@ -113,8 +116,8 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             form.save()
-            messages.success(request, f'Usuario {username} creado')
-            return redirect('/')
+            context = messages.success(request, f'Usuario {username} creado')
+            return redirect('/', context)
     else:
         form = UserCreationForm()
     context = {'form': form}

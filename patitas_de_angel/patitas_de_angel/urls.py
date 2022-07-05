@@ -23,7 +23,7 @@ from academiapp.views import register
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('academiapp.urls')),
-    path('index', views.index),
+    #path('index', views.index),
     path('busqueda_mascotas', views.busqueda_mascotas),
     path('buscar/', views.buscar),
     path('nuevaMascota', views.nuevaMascota),
@@ -31,7 +31,7 @@ urlpatterns = [
     path('registration/detalleMascota/<int:id>', views.detalleMascota),
     path('registration/editarMascota/<int:id>', views.editarMascota),
     path('registration/eliminarMascota/<int:id>', views.eliminarMascota),
-    path('contacto/', views.contacto),
+    #path('contacto/', views.contacto),
     path('registrar', register, name="registrar"),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

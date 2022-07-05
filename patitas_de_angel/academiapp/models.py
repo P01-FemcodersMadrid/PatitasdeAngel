@@ -1,3 +1,6 @@
+from django.conf import settings
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import User
 from django.db import models
 #from django.contrib.auth.models import User
 
@@ -41,11 +44,11 @@ class Clienta(models.Model):
     def __str__(self):
         return f'{self.dni_Responsable} {self.nombre_Responsable} {self.apellido_Responsable}'
 
-class Mascota(models.Model):
-    nombre = models.CharField(max_length=20)
-    especie = models.CharField(max_length=20)
-    raza = models.CharField(max_length=20)
-    clienta_id = models.ForeignKey(Clienta, on_delete=models.SET_NULL, null=True)
+#class Mascota(models.Model):
+#    nombre = models.CharField(max_length=20)
+#    especie = models.CharField(max_length=20)
+#    raza = models.CharField(max_length=20)
+#    clienta_id = models.ForeignKey(Clienta, on_delete=models.SET_NULL, null=True)
 #    dni_Responsable = models.CharField(max_length=20)
 #    nombre_Responsable = models.CharField(max_length=20)
 #    apellido_Responsable = models.CharField(max_length=20)
@@ -53,8 +56,8 @@ class Mascota(models.Model):
  #   def __str__(self):
  #       return f'Mascota {self.id} : {self.nombre} {self.especie} {self.raza} {self.dni_Responsable} {self.nombre_Responsable} {self.apellido_Responsable} {self.email_Responsable}'
 
-    def __str__(self):
-        return f'{self.nombre} {self.especie} {self.raza} '
+ #   def __str__(self):
+ #       return f'{self.nombre} {self.especie} {self.raza} '
 
 
 
@@ -75,6 +78,10 @@ class Mascota(models.Model):
     raza = models.CharField(max_length=20)
     clienta_id = models.ForeignKey(Clienta, on_delete=models.SET_NULL, null=True)
     asignatura_id = models.ForeignKey(Asignatura, on_delete=models.SET_NULL, null=True)
+#    usuario_id = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+#    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+ #   user_id = User.ForeignKey(User, on_delete=User.SET_NULL, null=True)
+
 #    dni_Responsable = models.CharField(max_length=20)
 #    nombre_Responsable = models.CharField(max_length=20)
 #    apellido_Responsable = models.CharField(max_length=20)
