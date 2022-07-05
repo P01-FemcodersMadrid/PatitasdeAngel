@@ -3,11 +3,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link type="text/css" href=
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'img/logotransparente.jpg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <title>Registrate</title>
 </head>
 <body>
-    imagen = models.ImageField(upload_to = 'noticia/', default = 'pic_folder/None/partner-3.png')
+    <img class= "img1" src="{% static 'img/logotransparente.jpg' %}">
     <form method="POST">
         {% csrf_token %}
       <h1>Registrar persona</h1>
