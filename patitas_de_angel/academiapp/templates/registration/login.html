@@ -10,6 +10,17 @@
     <h3 class="txt_gris_medio">Acceder</h3>
     <hr>
       <div class="login-container">
+          <!-- Manejo de mensajes ya sea de exito como de error-->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         {% if forms.errors %}
           <div class="alert alert-danger">
             <p>Tu usuario y contraseña no coinciden.</p>

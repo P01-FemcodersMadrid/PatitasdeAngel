@@ -6,11 +6,21 @@
 </head>
 <body>
 
+    <!-- Manejo de mensajes ya sea de exito como de error-->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
     <h1>Registrar persona</h1>
-    <!--{% if form.errors %}
-    <p style="color: red;"> POr favor revisa este campo</p>
-    {% endif %}-->
+    {% if form.errors %}
+    <p style="color: red;">Por favor revisa este campo</p>
+    {% endif %}
 
     <form method="POST">
         {% csrf_token %}
@@ -18,7 +28,7 @@
         {{form}}
       </table>
       <button type="submit">Enviar</button>
-  </form>
+    </form>
 
 
 </body>

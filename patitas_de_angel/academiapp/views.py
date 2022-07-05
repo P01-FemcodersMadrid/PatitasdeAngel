@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from django.shortcuts import render, redirect, get_object_or_404
 
+
 #app_name='academiapp'
 
 
@@ -41,19 +42,35 @@ def editarMascota(request, id):
         formaMascota = MascotaForm(request.POST, instance=mascota)
         if formaMascota.is_valid():
             formaMascota.save()
+            messages.success(request, "Modificado correctamente")
             return redirect('home')
     else:
           #pasa la informacion del objeto recuperado de nuestra base de datos
         formaMascota = MascotaForm(instance=mascota) #recibe una referencia de nuestro modelo formulario que llama a nuestra clase persona
                                                      # usamos instance para indicar el objeto que vamos a trabajar en el formulario
     return render(request, 'registration/editarMascota.html', {'formaMascota': formaMascota})
-
+""" 
 @login_required
 def eliminarMascota(request, id):
     mascota = get_object_or_404(Mascota, pk=id)
+    #POST request
     if mascota:
         mascota.delete()
-    return redirect('home')
+        messages.success(request, "Eliminado correctamente")
+        return redirect('home')
+    else:
+        messages.error(request, "No se ha eliminado")
+"""
+
+def eliminarMascota(request, id):
+    mascota = Mascota.objects.get(id=id)
+    #POST request
+    if request.method == "POST":
+        #Confirma eliminar
+        mascota.delete()
+        messages.success(request, "Eliminado correctamente")
+        return redirect('home')
+    return render(request, "registration/eliminarMascota.html", {'mascota': mascota})
 
 @login_required
 def listarMascotas(request):
@@ -67,7 +84,10 @@ def nuevaMascota(request):
         formaMascota = MascotaForm(request.POST)
         if formaMascota.is_valid():
             formaMascota.save()
+            messages.success(request, "Mascota agregada correctamente")
             return redirect('home')
+        else:
+            messages.error(request, "Falta ingresar datos")
     else:
         formaMascota = MascotaForm
 
@@ -106,7 +126,7 @@ def contacto(request):
 
     if request.method=="POST":
 
-        # El POST sirve para enviar un correoß
+        # El POST sirve para enviar un correo
         return render(request, "registration/gracias.html")
     return render(request, "registration/contacto.html")
 
@@ -120,6 +140,7 @@ def register(request):
             return redirect('/', context)
     else:
         form = UserCreationForm()
+
     context = {'form': form}
     return render(request, 'registration/registrar.html', context)
 

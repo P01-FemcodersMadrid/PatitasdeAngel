@@ -7,7 +7,18 @@
 </head>
 <body>
 
-<form method="POST">
+    <!-- Manejo de mensajes ya sea de exito como de error-->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="POST">
       <h1>Agregar Mascota</h1>
       <table>
         {{formaMascota}}
@@ -15,9 +26,7 @@
       <button type="submit">Enviar</button>
       {% csrf_token %}
       <!--variable para pasar validación-->
-  </form>
-
-
+    </form>
 
 </body>
 </html>
