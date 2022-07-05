@@ -18,7 +18,7 @@ from django.urls import path, include
 from academiapp import urls
 from django.contrib.auth import views as auth_views
 from academiapp import views
-
+from academiapp.views import register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,5 +32,6 @@ urlpatterns = [
     path('registration/editarMascota/<int:id>', views.editarMascota),
     path('registration/eliminarMascota/<int:id>', views.eliminarMascota),
     path('contacto/', views.contacto),
+    path('registrar', register, name="registrar"),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

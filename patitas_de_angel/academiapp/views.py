@@ -1,6 +1,8 @@
 import datetime
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.shortcuts import render, redirect, get_object_or_404
@@ -104,6 +106,19 @@ def contacto(request):
         # El POST sirve para enviar un correoß
         return render(request, "registration/gracias.html")
     return render(request, "registration/contacto.html")
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            messages.success(request, f'Usuario {username} creado')
+            return redirect('/')
+    else:
+        form = UserCreationForm()
+    context = {'form': form}
+    return render(request, 'registration/registrar.html', context)
 
 #def home(request):
 #    return HttpResponse("Bienvenido")
