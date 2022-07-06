@@ -1,10 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'img/logotransparente.jpg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>Registrate</title>
 </head>
 <body>
+<<<<<<< HEAD
 
     <!-- Manejo de mensajes ya sea de exito como de error-->
     {% if messages %}
@@ -22,6 +29,9 @@
     <p style="color: red;">Por favor revisa este campo</p>
     {% endif %}
 
+=======
+    <img class= "img1" src="{% static 'img/logotransparente.jpg' %}">
+>>>>>>> ed129d3f2658690cba6250b5e5b527089a599480
     <form method="POST">
         {% csrf_token %}
       <table>
