@@ -30,9 +30,9 @@ urlpatterns = [
     path('listarMascotas', views.listarMascotas),
     path('registration/detalleMascota/<int:id>', views.detalleMascota),
     path('registration/editarMascota/<int:id>', views.editarMascota),
-    #path('registration/eliminarMascota/<int:id>', views.eliminarMascota),
     path('registration/eliminarMascota/<int:id>', views.eliminarMascota, name='eliminarMascota'),
     #path('contacto/', views.contacto),
     path('registrar', register, name="registrar"),
     path('accounts/', include('django.contrib.auth.urls')),
+    #path('registro/', views.registro, name="registro"),
 ]

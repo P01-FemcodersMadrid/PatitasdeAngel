@@ -1,29 +1,23 @@
-from django.forms import ModelForm
-#    , EmailInput
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate
+from django.forms import ModelForm, EmailInput
 from academiapp.models import *
+from django.contrib.auth.models import User
 
 class MascotaForm(ModelForm):
     class Meta:
         model = Mascota
         fields = '__all__'
-#        widgets = {
-#            'email': EmailInput(attrs={'type':'email'})
-#        }
+"""
+class CustomUserCreationForm(UserCreationForm):
 
-
-
-
-
-
-#from django.contrib.auth.forms import UserCreationForm
-
-#from django.contrib.auth import authenticate
-
-##from patitas.models import Cuenta
-
-#from django.contrib.auth.models import User
-from .models import *
-
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+        widgets = {
+            'email': EmailInput(attrs={'type': 'email'})
+        }
+"""
 #	class RegistroForm(UserCreationForm):
 #		password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
 #		password2 = forms.CharField(label='Confirma Contraseña', widget=forms.PasswordInput)

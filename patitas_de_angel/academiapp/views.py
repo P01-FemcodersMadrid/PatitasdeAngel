@@ -1,28 +1,23 @@
 import datetime
-
 from django.contrib import messages
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.shortcuts import render, redirect, get_object_or_404
+from academiapp.forms import MascotaForm
 
-
-#app_name='academiapp'
-
+from academiapp.models import *
 
 # Create your views here.
-from academiapp.forms import MascotaForm
-from academiapp.models import *
-from django.contrib.auth.backends import *
 
 @login_required
 def home(request):
     mas = Mascota.objects.all()
-    #usuario = User.id.
     return render(request, "registration/main.html", {'mascotas': mas})
- #   return render(request, "registration/main.html", {'mascotas': mas}, {'usuario': usuario})
+
 
 @login_required
 def index(request):
@@ -68,7 +63,7 @@ def eliminarMascota(request, id):
     if request.method == "POST":
         #Confirma eliminar
         mascota.delete()
-        messages.success(request, "Eliminado correctamente")
+        messages.success(request, "Registro eliminado correctamente.")
         return redirect('home')
     return render(request, "registration/eliminarMascota.html", {'mascota': mascota})
 
@@ -84,10 +79,10 @@ def nuevaMascota(request):
         formaMascota = MascotaForm(request.POST)
         if formaMascota.is_valid():
             formaMascota.save()
-            messages.success(request, "Mascota agregada correctamente")
+            messages.success(request, "Registro de Mascota agregado correctamente.")
             return redirect('home')
         else:
-            messages.error(request, "Falta ingresar datos")
+            messages.error(request, "Falta ingresar datos.")
     else:
         formaMascota = MascotaForm
 
@@ -129,7 +124,24 @@ def contacto(request):
         # El POST sirve para enviar un correo
         return render(request, "registration/gracias.html")
     return render(request, "registration/contacto.html")
+""" 
+def registro(request):
+    data = {
+        'form': CustomUserCreationForm()
+    }
 
+    if request.method == "POST":
+        formulario =CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password"])
+            #redirigir al home
+            return redirect(to="home")
+        data["form"] = formulario
+
+    return render(request, 'registration/registro.html', data)
+
+"""
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -144,5 +156,4 @@ def register(request):
     context = {'form': form}
     return render(request, 'registration/registrar.html', context)
 
-#def home(request):
-#    return HttpResponse("Bienvenido")
+
