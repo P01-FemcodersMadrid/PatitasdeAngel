@@ -1,18 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Detalle de cada mascota</title>
+
+    <link href="{% static 'img/logotransparente.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+    <title>Información de la mascota</title>
 </head>
 <body>
-    <h1>Detalle</h1>
-    <div>id Mascota:{{mascota.id}}</div>
-    <div>nombre:{{mascota.nombre}}</div>
-    <div>apellido:{{mascota.clienta_id.nombre_Responsable}} {{mascota.clienta_id.apellido_Responsable}}</div>
-    <div>Email:{{mascota.clienta_id.email_Responsable}}</div>
-    <div>Cursos:{{mascota.asignatura_id.nombre}}</div>
 
-    <a href="{% url 'home' %}">Regresar al inicio</a>
 
+    <div class="contenedor">
+        <h1 class="titulo1">Información de: {{mascota.nombre}}</h1>
+        <img class= "logo" src="{% static 'img/logotransparente.png' %}">
+        <div class="otrocontenedor">
+            <p><strong>Identificador:</strong> {{mascota.id}}</p>
+            <p><strong>Especie:</strong> {{mascota.especie}}</p>
+            <p><strong>Raza:</strong> {{mascota.raza}}</p>
+            <p><strong>Nombre de responsable:</strong> {{mascota.clienta_id.nombre_Responsable}} {{mascota.clienta_id.apellido_Responsable}}</p>
+            <p><strong>Email de responsable:</strong> {{mascota.clienta_id.email_Responsable}}</p>
+            <p><strong>Curso:</strong> {{mascota.asignatura_id.nombre}}</p>
+            <br>
+            <button class="boton"><a href="{% url 'home' %}">Regresar</a></button>
+        </div>
+    </div>
 </body>
 </html>

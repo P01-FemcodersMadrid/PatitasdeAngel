@@ -2,12 +2,11 @@
 <html lang="en">
 <body>
 
-  {% block content %}
   <form method="POST">{% csrf_token %}
     <h3>¿Seguro desea eliminar el registro de: "{{mascota.nombre}}"</h3>
     <input type="submit" value="Sí, eliminar">
     <a href="{% url 'home' %}">Cancelar</a>
   </form>
-  {% endblock %}
+
 </body>
 </html>

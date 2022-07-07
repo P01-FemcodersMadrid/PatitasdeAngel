@@ -23,7 +23,7 @@ class Clienta(models.Model):
 
 
     def __str__(self):
-        return f'{self.dni_Responsable} {self.nombre_Responsable} {self.apellido_Responsable}'
+        return f'Responsable: {self.dni_Responsable} {self.nombre_Responsable} {self.apellido_Responsable}'
 
 class Asignatura(models.Model):
     nombre = models.CharField(max_length=20)
@@ -32,7 +32,7 @@ class Asignatura(models.Model):
     pagado = models.BooleanField()
 
     def __str__(self):
-        return f'{self.nombre} {self.descripcion} {self.completado} {self.pagado}'
+        return f'{self.nombre} Completado: {self.completado} Pagado: {self.pagado}'
 
 
 class Mascota(models.Model):
@@ -43,5 +43,5 @@ class Mascota(models.Model):
     asignatura_id = models.ForeignKey(Asignatura, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return f'{self.nombre} {self.especie} {self.raza} '
+        return f'{self.nombre} {self.especie} {self.raza}'
 

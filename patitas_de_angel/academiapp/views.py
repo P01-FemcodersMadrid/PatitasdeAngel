@@ -18,13 +18,6 @@ def home(request):
     mas = Mascota.objects.all()
     return render(request, "registration/main.html", {'mascotas': mas})
 
-
-@login_required
-def index(request):
-
-    mas = Mascota.objects.all()
-    return render(request, "registration/index.html", {'mascotas': mas})
-
 @login_required
 def detalleMascota(request, id):
     mascota = Mascota.objects.get(pk=id)
@@ -41,22 +34,13 @@ def editarMascota(request, id):
             return redirect('home')
     else:
           #pasa la informacion del objeto recuperado de nuestra base de datos
-        formaMascota = MascotaForm(instance=mascota) #recibe una referencia de nuestro modelo formulario que llama a nuestra clase persona
-                                                     # usamos instance para indicar el objeto que vamos a trabajar en el formulario
-    return render(request, 'registration/editarMascota.html', {'formaMascota': formaMascota})
-""" 
-@login_required
-def eliminarMascota(request, id):
-    mascota = get_object_or_404(Mascota, pk=id)
-    #POST request
-    if mascota:
-        mascota.delete()
-        messages.success(request, "Eliminado correctamente")
-        return redirect('home')
-    else:
-        messages.error(request, "No se ha eliminado")
-"""
+          # recibe una referencia de nuestro modelo formulario que llama a nuestra clase persona
+          # usamos instance para indicar el objeto que vamos a trabajar en el formulario
+        formaMascota = MascotaForm(instance=mascota)
 
+    return render(request, 'registration/editarMascota.html', {'formaMascota': formaMascota})
+
+@login_required
 def eliminarMascota(request, id):
     mascota = Mascota.objects.get(id=id)
     #POST request
@@ -116,32 +100,6 @@ def buscar(request):
 
     return HttpResponse(mensaje)
 
-@login_required
-def contacto(request):
-
-    if request.method=="POST":
-
-        # El POST sirve para enviar un correo
-        return render(request, "registration/gracias.html")
-    return render(request, "registration/contacto.html")
-""" 
-def registro(request):
-    data = {
-        'form': CustomUserCreationForm()
-    }
-
-    if request.method == "POST":
-        formulario =CustomUserCreationForm(data=request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password"])
-            #redirigir al home
-            return redirect(to="home")
-        data["form"] = formulario
-
-    return render(request, 'registration/registro.html', data)
-
-"""
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)

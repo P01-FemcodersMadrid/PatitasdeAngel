@@ -8,6 +8,7 @@ class MascotaForm(ModelForm):
     class Meta:
         model = Mascota
         fields = '__all__'
+
 """
 class CustomUserCreationForm(UserCreationForm):
 
