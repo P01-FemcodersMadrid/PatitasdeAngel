@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  padding: 0;
-  background-color: white;
+  padding: 0px;
+  background-size: cover;
 }
 
 h1 {
@@ -25,13 +25,6 @@ h1 {
 
 }
 
-.header{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /*grid-auto-rows: minmax(100px, auto);*/
-    grid-template-rows: 1fr;
-
-}
 
 .titulo1{
     margin-top: 100px;
@@ -41,14 +34,17 @@ h1 {
 .contenedor{
     display: grid;
     /*grid-template-columns: 200px 1fr 200px 1fr 200px;*/
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto 1fr auto;
     grid-gap: 180px;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     /*background-color: rgba(74, 15, 168, 0.502);*/
     color: rgba(23, 43, 133, 1);
     margin: auto;
     max-width: 50%;
+    max-height: 50%;
     text-align: center;
+    padding-top: 50px;
+    background-color: white;
 }
 
 .otrocontenedor{
@@ -81,3 +77,45 @@ p strong {
     text-decoration: none;
     font-size: 20px;
 }
+
+@media (max-width: 760px) {
+
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content-align: center;
+}
+
+.logo {
+    margin-top: -200px;
+    margin-left: 100px;
+}
+
+.otrocontenedor {
+    margin-left: 20px;
+
+}
+
+@media (max-width: 750px) {
+
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content-align: center;
+}
+
+.logo {
+    display:none;
+}
+
+.otrocontenedor {
+    margin-left: 20px;
+    margin-top: -180px;
+
+}
+}
+
+
+
