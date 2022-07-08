@@ -3,7 +3,6 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-
     <link href="{% static 'img/logotransparente.png' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +14,7 @@
 
 
     <div class="contenedor">
-        <h1 class="titulo1">Información de: {{mascota.nombre}}</h1>
+        <h1 class="titulo1">Información de {{mascota.nombre}}:</h1>
         <img class= "logo" src="{% static 'img/logotransparente.png' %}">
         <div class="otrocontenedor">
             <p class="azul"><strong>Identificador:</strong> {{mascota.id}}</p>

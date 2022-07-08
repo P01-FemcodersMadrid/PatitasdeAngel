@@ -78,6 +78,44 @@ p strong {
     font-size: 20px;
 }
 
+
+.otroboton{
+    background-color: rgba(156, 162, 239, 1);
+    border-radius: 20px
+}
+
+.otroboton a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.caja {
+    display: flex;
+    color: rgba(23, 43, 133, 1);
+    margin: auto;
+    max-width: 50%;
+    text-align: center;
+    padding-top: 50px;
+    background-color: white;
+}
+
+.caja .logo {
+
+    padding-left: 200px;
+
+}
+
+.cajita {
+
+    margin-top: 200px;
+    margin-left: -280px;
+
+}
+
+
+
+
 @media (max-width: 760px) {
 
 

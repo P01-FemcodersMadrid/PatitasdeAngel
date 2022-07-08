@@ -1,12 +1,26 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
+<head>
+    <link href="{% static 'img/logotransparente.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
 <body>
 
-  <form method="POST">{% csrf_token %}
-    <h3>¿Seguro desea eliminar el registro de: "{{mascota.nombre}}"</h3>
-    <input type="submit" value="Sí, eliminar">
-    <a href="{% url 'home' %}">Cancelar</a>
-  </form>
 
+  <div class="caja">
+      <img class= "logo" src="{% static 'img/logotransparente.png' %}">
+        <div class="cajita">
+            <form method="POST" class="forma">{% csrf_token %}
+              <h3>¿Seguro desea eliminar el registro de: "{{mascota.nombre}}"?</h3>
+                <br>
+              <input type="submit" class="otroboton" value="Sí, eliminar">
+              <button class="otroboton"><a href="{% url 'home' %}">Cancelar</a></button>
+            </form>
+        </div>
+  </div>
 </body>
 </html>
