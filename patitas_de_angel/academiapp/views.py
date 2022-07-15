@@ -7,8 +7,6 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.shortcuts import render, redirect, get_object_or_404
-from academiapp.forms import MascotaForm
-
 from academiapp.models import *
 
 # Create your views here.

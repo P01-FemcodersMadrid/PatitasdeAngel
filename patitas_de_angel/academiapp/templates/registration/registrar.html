@@ -1,52 +1,49 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="es">
+
 <head>
-
-
+    <meta charset="UTF-8">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'img/logotransparente1.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E>
+    <link rel=" preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <title>Registrate</title>
 </head>
+
 <body>
-    <div class="content">
-        {% block content %}
-
-           <h1>Regístrate</h1>
-            {% if form.errors %}
-
-            {% endif %}
-
-            <div class="topnavregistration">
-                <a href="login.html">Accede a tu cuenta</a>
-                <a href="registrar">Registrate en tu cuenta</a>
-                 <img class= "logo" src="{% static 'img/logotransparente.png' %}">
-             </div>
-
-        <!-- Manejo de mensajes ya sea de éxito como de error-->
-
-        <ul class="messages">
-            {% if messages %}
-            {% for message in messages %}
-                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}
-                </li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-
-        <form method="POST">
-            {% csrf_token %}
-            <table>
-            {{form}}
-            </table>
-
-            <button type="submit">Enviar</button>
-        </form>
-
-        <div class="footer">
-            <p>Footer</p>
-        </div>
-
-    {% endblock content %}
+    {% block content %}
+    <div class="logo">
+        <img src="{% static 'img/logotransparente1.png' %}">
     </div>
 
+    <h1>Regístrate para acceder a Patitas de ángel</h1>
+    {% if form.errors %}
+    {% endif %}
+
+    <ul class="messages">
+        {% if messages %}
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form class="form" method="POST">
+        {% csrf_token %}
+        <table class="table">
+            {{form}}
+        </table>
+        <br>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <footer class="footer">
+        <p>Este software lo ha realizado el Grupo 2 del proyecto de Python/Django (2022)</p>
+    </footer>
+    {% endblock content %}
 </body>
+
 </html>

@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
-from django.forms import ModelForm, EmailInput
+from django.forms import ModelForm
 from academiapp.models import *
 from django.contrib.auth.models import User
 

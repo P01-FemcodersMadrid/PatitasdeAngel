@@ -1,83 +1,81 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link type="text/css" href='{% static "css/barra.css" %}' rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'img/logotransparente1.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+   <!-- <link type="text/css" href='{% static "css/barra.css" %}' rel="stylesheet" />-->
     <title>Main</title>
 </head>
 <body>
-    {% include "registration/barra.html" %}
+   <!-- {% include "registration/barra.html" %}-->
 
-    <h1>Bienvenida {{user.username}} a Academia Patitas de Angel </h1>
+   <div class="navbar">
+       <button><a href='/accounts/logout'>Cerrar sesión</a></button>
+   </div>
 
-    <!-- Manejo de mensajes ya sea de exito como de error-->
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-            {{ message }}
-        </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+   <div class="contenedor">
+        <div class="logo1">
+                <img src="{% static 'img/logotransparente1.png' %}">
+        </div>
 
-    <div>Nro de mascotas registradas : {{mascotas|length}}</div>
-    <div>
-        <a href="nuevaMascota">Agregar Mascota</a>
-    </div>
 
-    <!--<p>El nombre de la clase del View es: {{nombre_persona}}{{apellido_persona}}</p>-->
-  <!--  <p>Las asignaturas dictadas en la Academia son:</p>
-    {% if asignaturas %}
-        <ul>
-            {% for asignatura in asignaturas %}
-            <li>
-                {{ asignatura.nombre }}
+        <h1 class="hijo2">Bienvenida {{user.username}}, Academia Patitas de Ángel </h1>
+
+        <!-- Manejo de mensajes ya sea de éxito como de error-->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
             </li>
             {% endfor %}
         </ul>
-  -->
-    <!-- Si no hay nada en asignaturas.-->
- <!--   {% else %}
-        <p>No hay ninguna asignatura.</p>
-    {% endif %}
-    -->
-    <!--<button><a href='busqueda_mascota.html'>Buscar mascota</a></button>-->
-    <div>
-        <table border="1">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Nombre Responsable</th>
-                <th>Email</th>
-                <th>Ver</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
+        {% endif %}
 
-            </thead>
-            <tbody>
-            {% for mas in mascotas %}
-            <tr>
-                <td>{{mas.id}}</td>
-                <td>{{mas.nombre}}</td>
-                <td>{{mas.clienta_id.nombre_Responsable}} {{mas.clienta_id.apellido_Responsable}}</td>
-                <td>{{mas.clienta_id.email_Responsable}}</td>
-                <td><a href="registration/detalleMascota/{{mas.id}}">Ver detalle</a></td>
-                <td><a href="registration/editarMascota/{{mas.id}}">Editar</a></td>
-                <td><a href="registration/eliminarMascota/{{mas.id}}">Eliminar</a></td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+        <!--<div class="hijo3">No. de mascotas: {{mascotas|length}}</div>-->
+        <div class="hijo4">
+            <button><a href="nuevaMascota">Agregar Mascota</a></button>
+        </div>
 
-    <button><a href='/accounts/logout'>Cerrar sesión</a></button>
-    <div class="footer">
-        <p>Footer</p>
-    </div>
+        <div class="hijo5">
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Nombre Responsable</th>
+                    <th>Email</th>
+                    <th>Ver</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
 
+                </thead>
+                <tbody>
+                {% for mas in mascotas %}
+                <tr>
+                    <td>{{mas.id}}</td>
+                    <td>{{mas.nombre}}</td>
+                    <td>{{mas.clienta_id.nombre_Responsable}} {{mas.clienta_id.apellido_Responsable}}</td>
+                    <td>{{mas.clienta_id.email_Responsable}}</td>
+                    <td><a href="registration/detalleMascota/{{mas.id}}">Ver detalle</a></td>
+                    <td><a href="registration/editarMascota/{{mas.id}}">Editar</a></td>
+                    <td><a href="registration/eliminarMascota/{{mas.id}}">Eliminar</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+       <!-- <button><a href='/accounts/logout'>Cerrar sesión</a></button>-->
+        <div class="hijo6">
+            <p>Grupo 2 - Academia Patitas de Ángel</p>
+        </div>
+   </div>
 </body>
 </html>
